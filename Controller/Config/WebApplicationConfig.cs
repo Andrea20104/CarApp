@@ -11,11 +11,10 @@ namespace Api.Config
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API Name v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Vehicle.Api v1");
             });
 
             app.UseRouting();
-
             app.MapControllers();
         }
     }

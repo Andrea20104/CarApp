@@ -25,7 +25,7 @@ namespace Api.IoC.Modules
         {
             var assemblies = GetAssembliesInBasePath().ToArray();
 
-            // Register services
+            // Register all types implementing IService
             builder.RegisterAssemblyTypes(assemblies)
                 .AssignableTo<IService>()
                 .AsImplementedInterfaces()

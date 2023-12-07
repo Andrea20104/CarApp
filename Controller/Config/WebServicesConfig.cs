@@ -13,9 +13,12 @@ namespace Api.Config
         /// <returns>IServiceCollection.</returns>
         public static void AddWebServiceConfig(this IServiceCollection services)
         {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API Name", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vehicle.Api", Version = "v1" });
             });
         }
     }

@@ -4,6 +4,8 @@ namespace Api.IoC
 {
     using Module = Autofac.Module;
     using Autofac;
+    using Business.Interfaces;
+    using Business;
 
     /// <summary>
     /// Container Module.
@@ -18,8 +20,8 @@ namespace Api.IoC
         /// registered.</param>
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterModule<AutoMapperModule>();
             builder.RegisterModule<CoreApplicationModule>();
+            builder.RegisterModule<AutoMapperModule>();
 
             base.Load(builder);
         }
