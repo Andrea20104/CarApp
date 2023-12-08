@@ -9,8 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessInterfaces\Business.Interfaces.csproj" />
     <ProjectReference Include="..\Entities\Business.Entities.csproj" />
-    <ProjectReference Include="..\Repository.Interfaces\Repository.Interfaces.csproj" />
-    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
 </Project>
