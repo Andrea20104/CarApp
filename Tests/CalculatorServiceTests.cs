@@ -107,20 +107,6 @@ namespace Tests
             Assert.AreEqual(1040320m, result.TotalCost);
         }
 
-        [TestMethod]
-        public void CalculateTotalCost_NullVehicle_ThrowsArgumentNullException()
-        {
-            // Arrange
-            var calculatorService = new CalculatorService();
-
-            // Act and Assert
-            Assert.ThrowsException<ArgumentNullException>(() =>
-            {
-                calculatorService.CalculateTotalCost(null!);
-            });
-
-        }
-
         public CalculatorService calculatorServiceTest()
         {
             return new CalculatorService();

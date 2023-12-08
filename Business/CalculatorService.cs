@@ -8,7 +8,6 @@ namespace Business
     {
         public AuctionCosts CalculateTotalCost(Vehicle vehicle)
         {
-            ValidateRequest(vehicle);
 
             // Use the factory to create the appropriate calculator
             var feeCalculator = FeeCalculatorFactory.CreateCalculator(vehicle.VehicleType);
@@ -33,14 +32,6 @@ namespace Business
             };
 
             return costs;
-        }
-
-        private static void ValidateRequest(Vehicle vehicle)
-        {
-            if (vehicle == null)
-            {
-                throw new ArgumentNullException(nameof(vehicle));
-            }
         }
 
         private decimal CalculateAssociationFee(decimal basePrice)

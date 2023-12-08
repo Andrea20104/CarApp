@@ -23,9 +23,9 @@ namespace Controller.Controllers
         [HttpPost("calculateTotalCost")]
         public IActionResult CalculateTotalCost([FromBody] VehicleRequest vehicleRequest)
         {
-            if (vehicleRequest == null)
+            if (vehicleRequest.BasePrice == 0 || string.IsNullOrEmpty(vehicleRequest.VehicleType))
             {
-                return BadRequest("Invalid vehicle data.");
+                return BadRequest("Invalid vehicle data");
             }
             Vehicle vehicle = _mapper.Map<Vehicle>(vehicleRequest);
             AuctionCosts totalCost = _calculatorService.CalculateTotalCost(vehicle);

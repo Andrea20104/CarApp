@@ -78,12 +78,12 @@ namespace Tests
             var controller = new VehicleController(calculatorServiceMock.Object, mapperMock.Object);
 
             // Act
-            var result = controller.CalculateTotalCost(null!);
+            var result = controller.CalculateTotalCost(new VehicleRequest(0,""));
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
             var badRequestResult = (BadRequestObjectResult)result;
-            Assert.AreEqual("Invalid vehicle data.", badRequestResult.Value);
+            Assert.AreEqual("Invalid vehicle data", badRequestResult.Value);
         }
     }
 }
