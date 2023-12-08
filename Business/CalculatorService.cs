@@ -1,4 +1,5 @@
-﻿using Business.Interfaces;
+﻿using Business.Entities.Constants;
+using Business.Interfaces;
 using Entities;
 
 namespace Business
@@ -15,7 +16,7 @@ namespace Business
             decimal basicFee = CalculateBasicFee(vehicle.BasePrice, vehicle.VehicleType);
             decimal specialFee = CalculateSpecialFee(vehicle.BasePrice, vehicle.VehicleType);
             decimal associationFee = CalculateAssociationFee(vehicle.BasePrice);
-            decimal storageFee = 100m; // Fixed storage fee
+            decimal storageFee = VariedConstants.storageFee; 
 
             decimal totalcost = vehicle.BasePrice + basicFee + specialFee + associationFee + storageFee;
 
@@ -33,7 +34,7 @@ namespace Business
 
         private decimal CalculateBasicFee(decimal basePrice, string vehicleType)
         {
-            decimal basicFeeRate = 0.1m;
+            decimal basicFeeRate = VariedConstants.basicFeeRate;
             decimal minBasicFee = GetMinBasicFee(vehicleType);
             decimal maxBasicFee = GetMaxBasicFee(vehicleType);
 
@@ -51,31 +52,27 @@ namespace Business
 
         private decimal CalculateAssociationFee(decimal basePrice)
         {
-            if (basePrice <= 500m) return 5m;
-            if (basePrice <= 1000m) return 10m;
-            if (basePrice <= 3000m) return 15m;
+            if (basePrice <= 500m) return VariedConstants.amountfive;
+            if (basePrice <= 1000m) return VariedConstants.amountten;
+            if (basePrice <= 3000m) return VariedConstants.amountfiftheen;
 
-            return 20m;
+            return VariedConstants.amounttwenty;
         }
 
-        private decimal GetBasicFeeRate(string vehicleType)
-        {
-            return vehicleType.Equals("Luxury", StringComparison.OrdinalIgnoreCase) ? 0.1m : 0.02m;
-        }
 
         private decimal GetMinBasicFee(string vehicleType)
         {
-            return vehicleType.Equals("Luxury", StringComparison.OrdinalIgnoreCase) ? 25m : 10m;
+            return vehicleType.Equals(VariedConstants.vehicleTypeLuxury, StringComparison.OrdinalIgnoreCase) ? 25m : 10m;
         }
 
         private decimal GetMaxBasicFee(string vehicleType)
         {
-            return vehicleType.Equals("Luxury", StringComparison.OrdinalIgnoreCase) ? 200m : 50m;
+            return vehicleType.Equals(VariedConstants.vehicleTypeLuxury, StringComparison.OrdinalIgnoreCase) ? 200m : 50m;
         }
 
         private decimal GetSpecialFeeRate(string vehicleType)
         {
-            return vehicleType.Equals("Luxury", StringComparison.OrdinalIgnoreCase) ? 0.04m : 0.02m;
+            return vehicleType.Equals(VariedConstants.vehicleTypeLuxury, StringComparison.OrdinalIgnoreCase) ? 0.04m : 0.02m;
         }
 
         private decimal Clamp(decimal value, decimal min, decimal max)
