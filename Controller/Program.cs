@@ -13,6 +13,7 @@ public class Program
 
         var builder = WebApplication.CreateBuilder(args);
         var services = builder.Services;
+        var corsPolicy = "CORSPolicy";
 
         /// <summary>
         /// Configure host(Log and Autofac)
@@ -27,9 +28,10 @@ public class Program
         /// <summary>
         /// Configure Services
         /// </summary>
-        services.AddWebServiceConfig();
+        services.AddWebServiceConfig(corsPolicy);
 
         var app = builder.Build();
+        app.UseCors(corsPolicy);
         app.AddWebApplicationConfig();
 
         app.Run();
