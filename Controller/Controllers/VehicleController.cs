@@ -11,10 +11,10 @@ namespace Controller.Controllers
     [Route("api/[controller]")]
     public class VehicleController : ControllerBase
     {
-        private readonly ICalculatorService _calculatorService;
+        private readonly ICalculatorSercive _calculatorService;
         private readonly IMapper _mapper;
 
-        public VehicleController(ICalculatorService calculatorService, IMapper mapper)
+        public VehicleController(ICalculatorSercive calculatorService, IMapper mapper)
         {
             _calculatorService = calculatorService;
             _mapper = mapper;
